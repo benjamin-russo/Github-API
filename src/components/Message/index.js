@@ -8,12 +8,16 @@ import './styles.scss';
 import { Segment } from 'semantic-ui-react';
 
 // == Composant
-const Message = ({ cardsCount }) => (
-  <Segment textAlign="left">La recherche a donné {cardsCount} résultats.</Segment>
-);
+const Message = ({ cardsCount, error }) => <Segment textAlign="left">{error} La recherche a donné {cardsCount} résultats.</Segment>;
 
 Message.propTypes = {
-  cardsCount: PropTypes.number.isRequired,
+  cardsCount: PropTypes.number,
+  error: PropTypes.string,
+};
+
+Message.defaultProps = {
+  cardsCount: 0,
+  error: '',
 };
 
 // == Export
