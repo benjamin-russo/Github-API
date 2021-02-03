@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="app">
       <SearchBar />
-      <Message />
+      <Message cardsCount={data.total_count} />
       <Cards cardsData={data.items} />
     </div>
   );
