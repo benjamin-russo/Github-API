@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import { Input, Segment, Form } from 'semantic-ui-react';
@@ -7,7 +8,7 @@ import githubLogo from './logo-github.png';
 import './styles.scss';
 
 // == Composant
-const SearchBar = () => (
+const SearchBar = ({ handleSubmit }) => (
   <div>
 
     <header className="header">
@@ -15,13 +16,17 @@ const SearchBar = () => (
     </header>
 
     <Segment size="large">
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Input icon="search" placeholder="Search..." />
       </Form>
     </Segment>
 
   </div>
 );
+
+SearchBar.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 // == Export
 export default SearchBar;
