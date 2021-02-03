@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './styles.scss';
@@ -7,20 +8,36 @@ import './styles.scss';
 import { Card, Image } from 'semantic-ui-react';
 
 // == Composant
-const OneCard = () => (
+const OneCard = ({
+  title,
+  text,
+  owner,
+  image,
+}) => (
   <Card>
-    <Image src="https://react.semantic-ui.com/images/avatar/large/matthew.png" wrapped ui={false} />
+    <Image src={image} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>Matthew</Card.Header>
+      <Card.Header>{title}</Card.Header>
       <Card.Meta>
-        <span className="date">Joined in 2015</span>
+        <span className="date">{owner}</span>
       </Card.Meta>
       <Card.Description>
-        Matthew is a musician living in Nashville.
+        {text}
       </Card.Description>
     </Card.Content>
   </Card>
 );
+
+OneCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  owner: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};
+
+OneCard.defaultProps = {
+  text: '',
+};
 
 // == Export
 export default OneCard;
